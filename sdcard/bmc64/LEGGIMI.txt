@@ -1,0 +1,1 @@
+Metti qui il kernel C64 di BMC64 per Pi 3 (kernel8-32.img oppure kernel7.img). Vedi LEGGIMI.txt nella radice.

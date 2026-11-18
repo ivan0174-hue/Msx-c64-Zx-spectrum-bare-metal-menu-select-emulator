@@ -1,0 +1,134 @@
+RASPBERRY PI 3 - MENU DI AVVIO BARE METAL
+MSX (fMSX) + Commodore (BMC64) + ZX Spectrum (ZXMini)
+==========================================================
+
+All'accensione parte un menu: scegli con le frecce (o il joypad) e premi INVIO.
+Dopo 10 secondi parte da solo l'ultimo sistema usato (si cambia in launcher.cfg).
+Per tornare al menu: spegni e riaccendi il Raspberry
+(dall'MSX c'e' anche la voce "Torna al menu di avvio").
+
+Niente Linux: ogni sistema e' un kernel bare metal. Il launcher legge dalla SD
+il kernel scelto e lo avvia al posto suo ("chain boot"), come se l'avesse
+caricato il firmware.
+
+
+1. PREPARARE LA SCHEDA SD
+-------------------------
+Scheda formattata FAT32 (fino a 32 GB va bene il formato standard).
+
+a) (facoltativo) BMC64 - https://github.com/randyrossi/bmc64/releases
+   - Scompatta lo zip di BMC64 nella radice della SD.
+   - SPOSTA il kernel C64 per Pi 3 nella cartella /bmc64/ :
+       kernel8-32.img  (release recenti)  oppure  kernel7.img  (release vecchie)
+     Va spostato PRIMA del punto (c), altrimenti viene sovrascritto dal launcher.
+   - Gli altri kernel BMC64 (kernel8-32.img.c128, .vic20, .plus4, .pet,
+     oppure kernel7.img.c128 ...) restano nella radice: sono gia' nel menu.
+
+b) (facoltativo) ZXMini - https://zxmini.speccy.org/en/index.html
+   - Dallo zip di ZXMini copia SOLO il kernel per Raspberry Pi 2/3 a 32 bit
+     (kernel7.img, oppure kernel8-32.img se c'e') nella cartella /zxmini/ .
+   - NON copiare config.txt, cmdline.txt, bootcode.bin, start*.elf, fixup*.dat.
+   - I tuoi file TAP/TZX mettili dove vuoi (es. /zx/).
+
+c) Copia TUTTO il contenuto di questo pacchetto nella radice della SD,
+   sovrascrivendo i file esistenti (config.txt, cmdline.txt, bootcode.bin,
+   start.elf, fixup.dat, kernel8-32.img, kernel7.img).
+
+d) BIOS MSX (vedi sotto) e i tuoi giochi MSX.
+
+
+2. MSX
+------
+Cartelle sulla SD:
+   /msx/bios    BIOS originali (non inclusi per motivi di copyright)
+   /msx/roms    cartucce  .rom .mx1 .mx2
+   /msx/disks   floppy    .dsk
+   /msx/tapes   cassette  .cas
+   (puoi creare sottocartelle; il file browser le attraversa)
+
+BIOS: copia in /msx/bios i file con questi nomi esatti (maiuscolo):
+   MSX1 : MSX.ROM
+   MSX2 : MSX2.ROM  + MSX2EXT.ROM
+   MSX2+: MSX2P.ROM + MSX2PEXT.ROM
+   Floppy: DISK.ROM       (necessario per i .dsk)
+   Facoltativi: MSXDOS2.ROM, FMPAC.ROM (musica FM), KANJI.ROM, PAINTER.ROM
+   Sono gli stessi file usati da fMSX / RetroArch fmsx.
+Senza BIOS originale l'emulatore usa C-BIOS (libero, incluso in /msx/bios/cbios):
+funziona solo come MSX1 e solo con cartucce ROM (niente BASIC, floppy, cassette).
+
+Menu MSX (appare quando avvii "MSX"):
+   Modello            MSX1 / MSX2 / MSX2+
+   Memoria RAM        Auto, 64 KB ... 4 MB (memory mapper)
+   Memoria video      Auto, 32 ... 192 KB
+   Velocita' CPU      3.58 MHz (normale), 7.16, 10.74, 14.32, 21.48, 28.64 MHz
+   Video              PAL 50 Hz / NTSC 60 Hz
+   BIOS               Auto / Originale / C-BIOS
+   Cartuccia slot 1/2, Floppy A/B, Cassetta  -> INVIO apre il file browser,
+                      CANC (o freccia sinistra) svuota lo slot
+   Tipo mapper        Automatico oppure forzato (Konami, ASCII...) se un gioco non parte
+   Salva modifiche ai floppy: Mai / Immediato / All'uscita
+   MSX-DOS 2, Tutti gli sprite (no flicker), Uscita audio HDMI / jack
+Le scelte vengono salvate in /msx/msx.cfg e riproposte alla volta successiva.
+
+Le cassette partono da sole (l'emulatore scrive RUN"CAS:" / BLOAD"CAS:",R / CLOAD).
+
+Durante il gioco:
+   F12  (oppure HOME, oppure SELECT+START sul joypad) = menu di pausa:
+        riprendi, reset, cambia floppy A/B, cambia/riavvolgi cassetta,
+        torna al menu MSX, torna al menu di avvio.
+
+Tastiera (posizione dei tasti come una tastiera USA/internazionale):
+   Alt sinistro = GRAPH       AltGr o PagGiu' = CODE      PagSu = DEAD
+   F6 o Fine    = SELECT      F7 o Pausa      = STOP       Home  = HOME
+   Ins / Canc   = INS / DEL   F1-F5           = F1-F5
+Joypad USB: croce/levetta = joystick MSX porta 1, tasto A/Y = fuoco 1,
+            tasto B/X = fuoco 2. Il secondo joypad e' la porta 2.
+
+
+3. COMMODORE (BMC64)
+--------------------
+Si usa normalmente. IMPORTANTE: la voce "Switch machine" del menu di BMC64
+riscrive config.txt. Dopo uno switch verso C128/VIC-20/Plus4/PET il Raspberry
+partira' direttamente in quel computer, senza menu. Per ripristinare il menu:
+dentro BMC64 fai "Switch machine" verso C64, oppure cancella la riga
+"kernel=..." in fondo a config.txt. Consiglio: scegli la macchina dal menu
+di avvio invece di usare "Switch machine".
+
+
+4. ZX SPECTRUM (ZXMini)
+-----------------------
+ZXMini non e' open source: viene avviato cosi' com'e'. Il modello iniziale si
+imposta in cmdline.txt aggiungendo  model=48k  (oppure 128k, plus2a) sulla
+stessa riga, separato da uno spazio. Se ZXMini non parte dal menu, controlla
+il suo config.txt originale: se ha righe particolari, aggiungile al nostro.
+
+
+5. FILE DI CONFIGURAZIONE
+-------------------------
+   config.txt     impostazioni del firmware (video 720p 50 Hz, audio HDMI)
+   cmdline.txt    opzioni per i kernel (quella di BMC64; non cancellarla)
+   launcher.cfg   voci del menu di avvio: puoi aggiungere, togliere,
+                  rinominare voci e cambiare il timeout
+   msx/msx.cfg    ultime impostazioni dell'MSX (scritto dal menu)
+
+
+6. LIMITI
+---------
+ - MSX turboR (R800) non e' supportato da fMSX.
+ - Il menu e l'MSX sono stati provati in un emulatore (QEMU), non ancora su un
+   Raspberry Pi 3 vero: se qualcosa non va, collega un adattatore seriale ai
+   pin GPIO14/15 (115200 baud) per vedere il log.
+ - Tastiere/joypad: vanno collegati prima dell'accensione o in qualsiasi
+   momento (plug and play), ma alcuni joypad economici potrebbero avere i
+   tasti in ordine diverso.
+
+
+7. LICENZE
+----------
+ - Launcher e frontend MSX: GPL v3.
+ - fMSX (c) Marat Fayzullin: uso non commerciale, vedi sorgenti (fmsx/LICENSE).
+   Port libretro: https://github.com/libretro/fmsx-libretro
+ - Circle (c) R. Stange, circle-stdlib (c) S. Muehlstrasser: GPL v3.
+ - C-BIOS: licenza BSD (msx/bios/cbios/LICENZA-C-BIOS.txt).
+ - Firmware Raspberry Pi: LICENCE.broadcom.
+ - BMC64 e ZXMini appartengono ai rispettivi autori e non sono inclusi.

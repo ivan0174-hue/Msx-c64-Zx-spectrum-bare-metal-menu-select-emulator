@@ -1,0 +1,7 @@
+Copia qui i BIOS MSX con questi nomi:
+  MSX.ROM (MSX1)
+  MSX2.ROM + MSX2EXT.ROM (MSX2)
+  MSX2P.ROM + MSX2PEXT.ROM (MSX2+)
+  DISK.ROM (floppy)
+  facoltativi: MSXDOS2.ROM FMPAC.ROM KANJI.ROM PAINTER.ROM
+Senza questi file viene usato C-BIOS (cartella cbios, solo MSX1 e cartucce).

@@ -1,0 +1,1 @@
+Metti qui il kernel di ZXMini per Pi 2/3 (kernel7.img oppure kernel8-32.img). Vedi LEGGIMI.txt nella radice.

@@ -1,0 +1,61 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: C-BIOS
+Upstream-Contact: Maarten ter Huurne <maarten@treewalker.org, mthuurne@users.sf.net>
+Source: http://cbios.sourceforge.net/
+
+Files: *
+Copyright: 2002-2005 BouKiCHi
+           2003      Reikan
+           2004-2005 Patrick van Arkel <cbios@vampier.net>
+           2004-2006 Joost Yervante Damad <joost@lumatec.be>
+           2004-2006 Jussi Pitkänen <ccfg@pp.inet.fi>
+           2004-2008 Eric Boon <eric@auroramsx.nl>
+           2004-2011 Albert Beevendorp
+           2004-2011 Manuel Bilderbeek <manuel@msxnet.org>
+           2004-2014 Maarten ter Huurne <maarten@treewalker.org>
+           2010      FRS
+License: BSD-2-Clause
+
+Files: debian/*
+Copyright: 2004-2011 Joost Yervante Damad <andete@debian.org>
+           2015      Joao Eriberto Mota Filho <eriberto@debian.org>
+           2016      Raphael Mota Ramos <raphaelmota.ti@gmail.com>
+License: GPL-2+
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".

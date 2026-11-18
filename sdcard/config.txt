@@ -1,0 +1,32 @@
+#
+# Raspberry Pi 3 - menu di avvio bare metal
+# (launcher + MSX fMSX + Commodore BMC64 + ZX Spectrum ZXMini)
+#
+# Il firmware avvia il launcher (kernel8-32.img / kernel7.img: sono lo stesso file).
+# Il launcher mostra il menu e avvia il kernel scelto (chain boot).
+# Per tornare al menu: spegni e riaccendi (oppure "Torna al menu di avvio" nell'MSX).
+#
+# NON aggiungere una riga kernel=... qui, altrimenti il menu viene saltato.
+# (BMC64 la aggiunge da solo se usi "Switch machine" nel suo menu: vedi LEGGIMI.txt)
+#
+
+arm_64bit=0
+
+# Video: 720p 50 Hz su HDMI (come BMC64). Per 60 Hz usa hdmi_mode=4
+disable_overscan=1
+sdtv_mode=18
+hdmi_group=1
+hdmi_mode=19
+
+# Audio sempre su HDMI (anche con monitor DVI/adattatori)
+hdmi_drive=2
+
+# uncomment if you get no picture on HDMI for a default "safe" mode
+#hdmi_safe=1
+
+# uncomment to increase signal to HDMI, if you have interference, blanking, or no display
+#config_hdmi_boost=4
+
+gpu_mem=64
+disable_splash=1
+boot_delay=0
