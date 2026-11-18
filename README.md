@@ -14,7 +14,7 @@ Scarica [`release/rpi3-retro-sd.zip`](release/rpi3-retro-sd.zip) (già compilato
 radice di una SD FAT32 e segui `LEGGIMI.txt` (BMC64 e ZXMini vanno scaricati a parte; i BIOS MSX
 originali vanno in `/msx/bios`).
 
-> Nota: provato in QEMU (emulazione Raspberry Pi 2), non ancora su un Raspberry Pi 3 reale.
+> Provato su un Raspberry Pi 3 reale e in QEMU (emulazione Raspberry Pi 2).
 
 ## Come funziona
 * **launcher/** — app Circle: legge `launcher.cfg`, mostra il menu, carica in RAM il kernel scelto,

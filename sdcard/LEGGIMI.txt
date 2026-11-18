@@ -115,9 +115,9 @@ il suo config.txt originale: se ha righe particolari, aggiungile al nostro.
 6. LIMITI
 ---------
  - MSX turboR (R800) non e' supportato da fMSX.
- - Il menu e l'MSX sono stati provati in un emulatore (QEMU), non ancora su un
-   Raspberry Pi 3 vero: se qualcosa non va, collega un adattatore seriale ai
-   pin GPIO14/15 (115200 baud) per vedere il log.
+ - Il menu e l'MSX sono stati provati su un Raspberry Pi 3 reale e in QEMU.
+   Per vedere il log in caso di problemi, collega un adattatore seriale ai
+   pin GPIO14/15 (115200 baud).
  - Tastiere/joypad: vanno collegati prima dell'accensione o in qualsiasi
    momento (plug and play), ma alcuni joypad economici potrebbero avere i
    tasti in ordine diverso.
